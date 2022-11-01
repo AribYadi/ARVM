@@ -2,7 +2,7 @@ use chumsky::prelude::*;
 use logos::Logos;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Logos)]
-enum Token {
+pub enum Token {
   #[error]
   #[regex("[\n\t\r ]+", logos::skip)]
   Unknown,
@@ -12,11 +12,11 @@ enum Token {
 }
 
 #[derive(Debug, PartialEq)]
-enum Expr {
+pub enum Expr {
   Integer(u64),
 }
 
-fn parser(src: &str) -> impl Parser<Token, Expr, Error = Simple<Token>> + '_ {
+pub fn parser(src: &str) -> impl Parser<Token, Expr, Error = Simple<Token>> + '_ {
   just(Token::Integer).map_with_span(|_, sp| Expr::Integer(str::parse(&src[sp]).unwrap()))
 }
 
