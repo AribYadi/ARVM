@@ -6,8 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+argh = "0.1.9"
 chumsky = "0.8.0"
 logos = "0.12.1"
 
-[profile.dev.'*']
+[profile.dev.package.'*']
 opt-level = 2

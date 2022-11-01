@@ -1,1 +1,4 @@
 /target
+*.arvm
+*.c
+*.exe
